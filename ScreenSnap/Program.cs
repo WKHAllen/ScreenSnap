@@ -27,11 +27,20 @@ namespace ScreenSnap
             if (key == Keys.PrintScreen && Clipboard.ContainsImage())
             {
                 System.Drawing.Image img = Clipboard.GetImage();
-                if (img != null)
+                try
                 {
-                    string path = NewImagePath();
-                    img.Save(path);
-                    Console.WriteLine(path);
+                    if (img != null)
+                    {
+                        string path = NewImagePath();
+                        img.Save(path);
+                        Console.WriteLine(path);
+                    }
+                }
+                catch (Exception)
+                {
+#if DEBUG
+                    throw;
+#endif
                 }
             }
         }
@@ -44,7 +53,9 @@ namespace ScreenSnap
 
             string fullpath = path + "-0" + imgExt;
             for (int fileID = 0; File.Exists(fullpath); fileID++)
+            {
                 fullpath = path + "-" + fileID.ToString() + imgExt;
+            }
             return fullpath;
         }
 
