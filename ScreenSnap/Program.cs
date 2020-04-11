@@ -1,43 +1,56 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ScreenSnap
 {
     class Program
     {
-        private static bool prtscrPressed = false;
         private static KeyboardHook hook;
+        private static string saveDir = "images";
+        private const string timestampFormat = "yyyy.MM.dd-HH.mm.ss";
+        private const string imgExt = ".png";
 
+        [STAThread]
         static void Main()
         {
-            hook = new KeyboardHook(true);
-            hook.KeyDown += OnKeyDown;
-            hook.KeyUp += OnKeyUp;
-            Application.Run();
-        }
+            Directory.CreateDirectory(saveDir);
 
-        private static void OnKeyDown(Keys key, bool Shift, bool Ctrl, bool Alt)
-        {
-            if (key == Keys.PrintScreen && !prtscrPressed)
-            {
-                prtscrPressed = true;
-                if (!Alt)
-                    Console.WriteLine("PrintScreen pressed");
-                else
-                    Console.WriteLine("Alt-PrintScreen pressed");
-            }
+            hook = new KeyboardHook(true);
+            hook.KeyUp += OnKeyUp;
+
+            Application.Run();
         }
 
         private static void OnKeyUp(Keys key, bool Shift, bool Ctrl, bool Alt)
         {
-            if (key == Keys.PrintScreen && prtscrPressed)
+            if (key == Keys.PrintScreen && Clipboard.ContainsImage())
             {
-                prtscrPressed = false;
-                if (!Alt)
-                    Console.WriteLine("PrintScreen released");
-                else
-                    Console.WriteLine("Alt-PrintScreen released");
+                System.Drawing.Image img = Clipboard.GetImage();
+                if (img != null)
+                {
+                    string path = NewImagePath();
+                    img.Save(path);
+                    Console.WriteLine(path);
+                }
             }
+        }
+
+        private static string NewImagePath()
+        {
+            string timestamp = TimestampString();
+            string[] paths = { saveDir, timestamp };
+            string path = Path.Combine(paths);
+
+            string fullpath = path + "-0" + imgExt;
+            for (int fileID = 0; File.Exists(fullpath); fileID++)
+                fullpath = path + "-" + fileID.ToString() + imgExt;
+            return fullpath;
+        }
+
+        private static string TimestampString()
+        {
+            return DateTime.UtcNow.ToString(timestampFormat);
         }
     }
 }
