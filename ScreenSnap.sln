@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSnap", "ScreenSnap\ScreenSnap.csproj", "{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C56AF845-00DA-4194-B818-D1C925A5ACB1}
+	EndGlobalSection
+EndGlobal
