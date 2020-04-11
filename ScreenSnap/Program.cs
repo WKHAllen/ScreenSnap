@@ -8,7 +8,7 @@ namespace ScreenSnap
         private static bool prtscrPressed = false;
         private static KeyboardHook hook;
 
-        static void Main(string[] args)
+        static void Main()
         {
             hook = new KeyboardHook(true);
             hook.KeyDown += OnKeyDown;
