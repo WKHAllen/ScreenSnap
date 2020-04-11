@@ -1,25 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScreenSnap
 {
     class Program
     {
+        private static bool prtscrPressed = false;
+        private static KeyboardHook hook;
+
         static void Main(string[] args)
         {
-            InterceptKeys.Start(OnKeyPress);
+            hook = new KeyboardHook(true);
+            hook.KeyDown += OnKeyDown;
+            hook.KeyUp += OnKeyUp;
+            Application.Run();
         }
 
-        static void OnKeyPress(int keycode)
+        private static void OnKeyDown(Keys key, bool shift, bool ctrl, bool alt)
         {
-            Console.WriteLine(keycode);
-            Console.WriteLine((Keys)keycode);
-            Console.WriteLine((Keys)keycode == Keys.PrintScreen);
+            if (key == Keys.PrintScreen && !prtscrPressed)
+            {
+                prtscrPressed = true;
+                if (!alt)
+                    Console.WriteLine("PrintScreen pressed");
+                else
+                    Console.WriteLine("Alt-PrintScreen pressed");
+            }
+        }
+
+        private static void OnKeyUp(Keys key, bool shift, bool ctrl, bool alt)
+        {
+            if (key == Keys.PrintScreen && prtscrPressed)
+            {
+                prtscrPressed = false;
+                if (!alt)
+                    Console.WriteLine("PrintScreen released");
+                else
+                    Console.WriteLine("Alt-PrintScreen released");
+            }
         }
     }
 }
