@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSnap", "ScreenSnap\ScreenSnap.csproj", "{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSnapUI", "ScreenSnapUI\ScreenSnapUI.csproj", "{5D11FE8E-A4CA-4295-9F15-29CDE42FA893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07A7FB5A-E6C7-4ED4-9BC0-7BADF16E6845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D11FE8E-A4CA-4295-9F15-29CDE42FA893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D11FE8E-A4CA-4295-9F15-29CDE42FA893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D11FE8E-A4CA-4295-9F15-29CDE42FA893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D11FE8E-A4CA-4295-9F15-29CDE42FA893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
