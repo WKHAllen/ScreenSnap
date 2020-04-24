@@ -1,6 +1,7 @@
 ﻿using IniParser;
 using IniParser.Model;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -33,7 +34,6 @@ namespace ScreenSnapUI
         {
             iniData = iniParser.ReadFile(iniPath);
             savePath = iniData["Config"]["SavePath"].ToString();
-            Directory.CreateDirectory(savePath);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -58,6 +58,18 @@ namespace ScreenSnapUI
         {
             iniData["Config"]["SavePath"] = SaveFolderBox.Text;
             iniParser.WriteFile(iniPath, iniData);
+        }
+
+        private void OpenFolderButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(SaveFolderBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("The specified folder does not exist", "Invalid Folder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
