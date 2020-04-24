@@ -33,6 +33,7 @@
             this.SaveFolderLabel = new System.Windows.Forms.Label();
             this.SaveFolderBox = new System.Windows.Forms.TextBox();
             this.OpenFolderButton = new System.Windows.Forms.Button();
+            this.ClearFolderButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SaveFolderDialog
@@ -41,8 +42,7 @@
             // 
             // SaveFolderButton
             // 
-            this.SaveFolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveFolderButton.Location = new System.Drawing.Point(582, 12);
+            this.SaveFolderButton.Location = new System.Drawing.Point(12, 41);
             this.SaveFolderButton.Name = "SaveFolderButton";
             this.SaveFolderButton.Size = new System.Drawing.Size(100, 25);
             this.SaveFolderButton.TabIndex = 0;
@@ -52,6 +52,9 @@
             // 
             // SaveFolderLabel
             // 
+            this.SaveFolderLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveFolderLabel.AutoSize = true;
             this.SaveFolderLabel.Location = new System.Drawing.Point(12, 16);
             this.SaveFolderLabel.Name = "SaveFolderLabel";
@@ -61,19 +64,15 @@
             // 
             // SaveFolderBox
             // 
-            this.SaveFolderBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveFolderBox.Location = new System.Drawing.Point(102, 13);
+            this.SaveFolderBox.Location = new System.Drawing.Point(118, 13);
             this.SaveFolderBox.Name = "SaveFolderBox";
-            this.SaveFolderBox.Size = new System.Drawing.Size(474, 22);
+            this.SaveFolderBox.Size = new System.Drawing.Size(206, 22);
             this.SaveFolderBox.TabIndex = 2;
             this.SaveFolderBox.TextChanged += new System.EventHandler(this.SaveFolderBox_Changed);
             // 
             // OpenFolderButton
             // 
-            this.OpenFolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OpenFolderButton.Location = new System.Drawing.Point(688, 12);
+            this.OpenFolderButton.Location = new System.Drawing.Point(118, 41);
             this.OpenFolderButton.Name = "OpenFolderButton";
             this.OpenFolderButton.Size = new System.Drawing.Size(100, 25);
             this.OpenFolderButton.TabIndex = 3;
@@ -81,16 +80,27 @@
             this.OpenFolderButton.UseVisualStyleBackColor = true;
             this.OpenFolderButton.Click += new System.EventHandler(this.OpenFolderButton_Click);
             // 
+            // ClearFolderButton
+            // 
+            this.ClearFolderButton.Location = new System.Drawing.Point(224, 41);
+            this.ClearFolderButton.Name = "ClearFolderButton";
+            this.ClearFolderButton.Size = new System.Drawing.Size(100, 25);
+            this.ClearFolderButton.TabIndex = 4;
+            this.ClearFolderButton.Text = "Clear folder";
+            this.ClearFolderButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(336, 78);
+            this.Controls.Add(this.ClearFolderButton);
             this.Controls.Add(this.OpenFolderButton);
             this.Controls.Add(this.SaveFolderBox);
             this.Controls.Add(this.SaveFolderLabel);
             this.Controls.Add(this.SaveFolderButton);
-            this.MinimumSize = new System.Drawing.Size(500, 300);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "ScreenSnap";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -106,5 +116,6 @@
         private System.Windows.Forms.Label SaveFolderLabel;
         private System.Windows.Forms.TextBox SaveFolderBox;
         private System.Windows.Forms.Button OpenFolderButton;
+        private System.Windows.Forms.Button ClearFolderButton;
     }
 }
