@@ -88,6 +88,7 @@
             this.ClearFolderButton.TabIndex = 4;
             this.ClearFolderButton.Text = "Clear folder";
             this.ClearFolderButton.UseVisualStyleBackColor = true;
+            this.ClearFolderButton.Click += new System.EventHandler(this.ClearFolderButton_Click);
             // 
             // MainForm
             // 

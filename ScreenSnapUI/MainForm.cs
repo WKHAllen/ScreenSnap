@@ -71,5 +71,25 @@ namespace ScreenSnapUI
                 MessageBox.Show("The specified folder does not exist", "Invalid Folder", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ClearFolderButton_Click(object sender, EventArgs e)
+        {
+            DialogResult clear = MessageBox.Show("Are you sure you would like to delete the folder contents?", "Clear Folder Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (clear == DialogResult.Yes)
+            {
+                System.IO.DirectoryInfo di = new DirectoryInfo(SaveFolderBox.Text);
+                if (di.Exists)
+                {
+                    foreach (FileInfo file in di.EnumerateFiles())
+                    {
+                        file.Delete();
+                    }
+                    foreach (DirectoryInfo dir in di.EnumerateDirectories())
+                    {
+                        dir.Delete(true);
+                    }
+                }
+            }
+        }
     }
 }
