@@ -12,7 +12,7 @@ namespace ScreenSnapUI
         private const string iniPath = "Config.ini";
         private static readonly FileIniDataParser iniParser = new FileIniDataParser();
         private static readonly IniData iniData = iniParser.ReadFile(iniPath);
-        private const string snapBinPath = @"..\..\..\ScreenSnap\bin\Debug\ScreenSnap.exe";
+        private const string snapBinPath = "ScreenSnap.exe";
         private static readonly SnapProcess snapProcess = new SnapProcess(snapBinPath);
 
         public MainForm()
