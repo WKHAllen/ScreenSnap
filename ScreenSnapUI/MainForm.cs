@@ -9,16 +9,16 @@ namespace ScreenSnapUI
 {
     public partial class MainForm : Form
     {
-        private static string savePath = "images";
         private const string iniPath = "Config.ini";
         private static readonly FileIniDataParser iniParser = new FileIniDataParser();
-        private static IniData iniData = new IniData();
+        private static readonly IniData iniData = iniParser.ReadFile(iniPath);
+        private const string snapBinPath = @"..\..\..\ScreenSnap\bin\Debug\ScreenSnap.exe";
+        private static readonly SnapProcess snapProcess = new SnapProcess(snapBinPath);
 
         public MainForm()
         {
             InitializeComponent();
             CreateIni();
-            UpdateSavePath();
         }
 
         private static void CreateIni()
@@ -30,15 +30,13 @@ namespace ScreenSnapUI
             }
         }
 
-        private static void UpdateSavePath()
-        {
-            iniData = iniParser.ReadFile(iniPath);
-            savePath = iniData["Config"]["SavePath"].ToString();
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             SaveFolderBox.Text = iniData["Config"]["SavePath"].ToString();
+            if (snapProcess.Running())
+            {
+                ToggleBackgroundProgramButton.Text = "Stop background program";
+            }
         }
 
         private void SaveFolderButton_Click(object sender, EventArgs e)
@@ -89,6 +87,20 @@ namespace ScreenSnapUI
                         dir.Delete(true);
                     }
                 }
+            }
+        }
+
+        private void ToggleBackgroundProgramButton_Click(object sender, EventArgs e)
+        {
+            if (snapProcess.Running())
+            {
+                snapProcess.Stop();
+                ToggleBackgroundProgramButton.Text = "Start background program";
+            }
+            else
+            {
+                snapProcess.Start();
+                ToggleBackgroundProgramButton.Text = "Stop background program";
             }
         }
     }

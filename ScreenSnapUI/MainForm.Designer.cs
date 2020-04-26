@@ -34,6 +34,7 @@
             this.SaveFolderBox = new System.Windows.Forms.TextBox();
             this.OpenFolderButton = new System.Windows.Forms.Button();
             this.ClearFolderButton = new System.Windows.Forms.Button();
+            this.ToggleBackgroundProgramButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SaveFolderDialog
@@ -42,7 +43,7 @@
             // 
             // SaveFolderButton
             // 
-            this.SaveFolderButton.Location = new System.Drawing.Point(12, 41);
+            this.SaveFolderButton.Location = new System.Drawing.Point(12, 40);
             this.SaveFolderButton.Name = "SaveFolderButton";
             this.SaveFolderButton.Size = new System.Drawing.Size(100, 25);
             this.SaveFolderButton.TabIndex = 0;
@@ -56,7 +57,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveFolderLabel.AutoSize = true;
-            this.SaveFolderLabel.Location = new System.Drawing.Point(12, 16);
+            this.SaveFolderLabel.Location = new System.Drawing.Point(12, 15);
             this.SaveFolderLabel.Name = "SaveFolderLabel";
             this.SaveFolderLabel.Size = new System.Drawing.Size(84, 17);
             this.SaveFolderLabel.TabIndex = 1;
@@ -64,7 +65,7 @@
             // 
             // SaveFolderBox
             // 
-            this.SaveFolderBox.Location = new System.Drawing.Point(118, 13);
+            this.SaveFolderBox.Location = new System.Drawing.Point(118, 12);
             this.SaveFolderBox.Name = "SaveFolderBox";
             this.SaveFolderBox.Size = new System.Drawing.Size(206, 22);
             this.SaveFolderBox.TabIndex = 2;
@@ -72,7 +73,7 @@
             // 
             // OpenFolderButton
             // 
-            this.OpenFolderButton.Location = new System.Drawing.Point(118, 41);
+            this.OpenFolderButton.Location = new System.Drawing.Point(118, 40);
             this.OpenFolderButton.Name = "OpenFolderButton";
             this.OpenFolderButton.Size = new System.Drawing.Size(100, 25);
             this.OpenFolderButton.TabIndex = 3;
@@ -82,7 +83,7 @@
             // 
             // ClearFolderButton
             // 
-            this.ClearFolderButton.Location = new System.Drawing.Point(224, 41);
+            this.ClearFolderButton.Location = new System.Drawing.Point(224, 40);
             this.ClearFolderButton.Name = "ClearFolderButton";
             this.ClearFolderButton.Size = new System.Drawing.Size(100, 25);
             this.ClearFolderButton.TabIndex = 4;
@@ -90,11 +91,22 @@
             this.ClearFolderButton.UseVisualStyleBackColor = true;
             this.ClearFolderButton.Click += new System.EventHandler(this.ClearFolderButton_Click);
             // 
+            // ToggleBackgroundProgramButton
+            // 
+            this.ToggleBackgroundProgramButton.Location = new System.Drawing.Point(12, 71);
+            this.ToggleBackgroundProgramButton.Name = "ToggleBackgroundProgramButton";
+            this.ToggleBackgroundProgramButton.Size = new System.Drawing.Size(312, 25);
+            this.ToggleBackgroundProgramButton.TabIndex = 5;
+            this.ToggleBackgroundProgramButton.Text = "Start background program";
+            this.ToggleBackgroundProgramButton.UseVisualStyleBackColor = true;
+            this.ToggleBackgroundProgramButton.Click += new System.EventHandler(this.ToggleBackgroundProgramButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 78);
+            this.ClientSize = new System.Drawing.Size(336, 108);
+            this.Controls.Add(this.ToggleBackgroundProgramButton);
             this.Controls.Add(this.ClearFolderButton);
             this.Controls.Add(this.OpenFolderButton);
             this.Controls.Add(this.SaveFolderBox);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.TextBox SaveFolderBox;
         private System.Windows.Forms.Button OpenFolderButton;
         private System.Windows.Forms.Button ClearFolderButton;
+        private System.Windows.Forms.Button ToggleBackgroundProgramButton;
     }
 }
