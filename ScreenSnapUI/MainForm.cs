@@ -28,6 +28,7 @@ namespace ScreenSnapUI
                 iniData = new IniData();
                 iniData["Config"]["SavePath"] = "images";
                 iniParser.WriteFile(iniPath, iniData);
+                Directory.CreateDirectory("images");
             }
             else
             {
