@@ -357,4 +357,4 @@ MigrationBackup/
 .ionide/
 
 todo.txt
-assets/*.png
+assets/
