@@ -11,22 +11,27 @@ namespace ScreenSnapUI
     {
         private const string iniPath = "Config.ini";
         private static readonly FileIniDataParser iniParser = new FileIniDataParser();
-        private static readonly IniData iniData = iniParser.ReadFile(iniPath);
+        private static IniData iniData;
         private const string snapBinPath = "ScreenSnap.exe";
         private static readonly SnapProcess snapProcess = new SnapProcess(snapBinPath);
 
         public MainForm()
         {
-            InitializeComponent();
             CreateIni();
+            InitializeComponent();
         }
 
         private static void CreateIni()
         {
             if (!File.Exists(iniPath))
             {
+                iniData = new IniData();
                 iniData["Config"]["SavePath"] = "images";
                 iniParser.WriteFile(iniPath, iniData);
+            }
+            else
+            {
+                iniData = iniParser.ReadFile(iniPath);
             }
         }
 
