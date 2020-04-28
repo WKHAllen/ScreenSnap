@@ -33,6 +33,10 @@ namespace ScreenSnapUI
             else
             {
                 iniData = iniParser.ReadFile(iniPath);
+                if (iniData["Config"]["SavePath"] == "images" && !Directory.Exists("images"))
+                {
+                    Directory.CreateDirectory("images");
+                }
             }
         }
 
