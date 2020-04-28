@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define ScreenSnap_TargetDir=$(var.ScreenSnap.TargetDir)?><?define ScreenSnapUI_TargetDir=$(var.ScreenSnapUI.TargetDir)?>
+	<Product Id="*" Name="ScreenSnap" Language="1033" Version="1.0.0.0" Manufacturer="Will Allen" UpgradeCode="ca3d6a1e-69d2-4c31-89bd-f5b4f2056bea">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+    <Property Id="MSIUSEREALADMINDETECTION" Value="1" />
+
+		<Feature Id="ProductFeature" Title="ScreenSnap" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="ApplicationShortcutDesktop" />
+      <ComponentRef Id="INSTALLFOLDER_Permission"/>
+		</Feature>
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="ScreenSnap">
+          <Component Id="INSTALLFOLDER_Permission" Guid="fd4d6bae-cb0f-4b3b-8a0f-13ecd4ee88a1">
+            <CreateFolder>
+              <Permission User="Everyone" GenericAll="yes" />
+            </CreateFolder>
+          </Component>
+        </Directory>
+			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="ScreenSnap" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+		</Directory>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="4a8f6711-5964-4406-8a33-da1c9df3c30c">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="ScreenSnap" Description="ScreenSnap" Target="[INSTALLFOLDER]ScreenSnapUI.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\ScreenSnap" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationShortcutDesktop" Guid="061b574e-24d8-4593-95cd-7aa039304cee">
+        <Shortcut Id="ApplicationDesktopShortcut" Name="ScreenSnap" Description="ScreenSnap" Target="[INSTALLFOLDER]ScreenSnapUI.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveDesktopFolder" Directory="DesktopFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\ScreenSnap" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+      <Component Id="Config.ini" Guid="401cbd13-061d-4a70-bcad-c155a157cd2d">
+        <File Id="Config.ini" Name="Config.ini" Source="$(var.ScreenSnap_TargetDir)Config.ini" />
+      </Component>
+      <Component Id="INIFileParser.dll" Guid="3969e100-ca5d-4f8b-8e1f-b2a535c5d92a">
+        <File Id="INIFileParser.dll" Name="INIFileParser.dll" Source="$(var.ScreenSnap_TargetDir)INIFileParser.dll" />
+      </Component>
+      <Component Id="INIFileParser.xml" Guid="0e348a5c-effc-4f1b-8b8e-1e4e8148e54b">
+        <File Id="INIFileParser.xml" Name="INIFileParser.xml" Source="$(var.ScreenSnap_TargetDir)INIFileParser.xml" />
+      </Component>
+			<Component Id="ScreenSnap.exe" Guid="7bc8bf8f-6d7b-4a92-8511-c8c531350463">
+			  <File Id="ScreenSnap.exe" Name="ScreenSnap.exe" Source="$(var.ScreenSnap_TargetDir)ScreenSnap.exe" />
+			</Component>
+			<Component Id="ScreenSnap.exe.config" Guid="d3d07e27-97d5-4548-b8dc-59c96112fd62">
+			  <File Id="ScreenSnap.exe.config" Name="ScreenSnap.exe.config" Source="$(var.ScreenSnap_TargetDir)ScreenSnap.exe.config" />
+			</Component>
+			<Component Id="ScreenSnapUI.exe" Guid="6a6f53b2-558e-4c4f-a7b5-512823533c63">
+			  <File Id="ScreenSnapUI.exe" Name="ScreenSnapUI.exe" Source="$(var.ScreenSnapUI_TargetDir)ScreenSnapUI.exe" />
+			</Component>
+			<Component Id="ScreenSnapUI.exe.config" Guid="3aaca04f-c009-4f55-a439-98c081f0cdc1">
+			  <File Id="ScreenSnapUI.exe.config" Name="ScreenSnapUI.exe.config" Source="$(var.ScreenSnapUI_TargetDir)ScreenSnapUI.exe.config" />
+			</Component>
+		</ComponentGroup>
+  </Product>
+</Wix>
