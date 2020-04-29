@@ -18,6 +18,7 @@ namespace ScreenSnap
         [STAThread]
         static void Main()
         {
+            Startup.RegisterStartup("ScreenSnap");
             CreateIni();
             UpdateSavePath();
 
