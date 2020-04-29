@@ -61,14 +61,8 @@
 			<Component Id="ScreenSnap.exe" Guid="7bc8bf8f-6d7b-4a92-8511-c8c531350463">
 			  <File Id="ScreenSnap.exe" Name="ScreenSnap.exe" Source="$(var.ScreenSnap_TargetDir)ScreenSnap.exe" />
 			</Component>
-			<Component Id="ScreenSnap.exe.config" Guid="d3d07e27-97d5-4548-b8dc-59c96112fd62">
-			  <File Id="ScreenSnap.exe.config" Name="ScreenSnap.exe.config" Source="$(var.ScreenSnap_TargetDir)ScreenSnap.exe.config" />
-			</Component>
 			<Component Id="ScreenSnapUI.exe" Guid="6a6f53b2-558e-4c4f-a7b5-512823533c63">
 			  <File Id="ScreenSnapUI.exe" Name="ScreenSnapUI.exe" Source="$(var.ScreenSnapUI_TargetDir)ScreenSnapUI.exe" />
-			</Component>
-			<Component Id="ScreenSnapUI.exe.config" Guid="3aaca04f-c009-4f55-a439-98c081f0cdc1">
-			  <File Id="ScreenSnapUI.exe.config" Name="ScreenSnapUI.exe.config" Source="$(var.ScreenSnapUI_TargetDir)ScreenSnapUI.exe.config" />
 			</Component>
 		</ComponentGroup>
 
