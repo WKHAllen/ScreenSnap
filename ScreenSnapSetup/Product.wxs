@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define ScreenSnap_TargetDir=$(var.ScreenSnap.TargetDir)?><?define ScreenSnapUI_TargetDir=$(var.ScreenSnapUI.TargetDir)?>
-	<Product Id="cd077477-d4ea-4af2-a246-e07d4507b2f4" Name="ScreenSnap" Language="1033" Version="1.0.0.0" Manufacturer="Will Allen" UpgradeCode="ca3d6a1e-69d2-4c31-89bd-f5b4f2056bea">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+  <Product Id="cd077477-d4ea-4af2-a246-e07d4507b2f4" Name="ScreenSnap" Language="1033" Version="1.0.0.0" Manufacturer="Will Allen" UpgradeCode="ca3d6a1e-69d2-4c31-89bd-f5b4f2056bea">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate EmbedCab="yes" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
 
-    <Property Id="MSIUSEREALADMINDETECTION" Value="1" />
-
-		<Feature Id="ProductFeature" Title="ScreenSnap" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
+    <Feature Id="ProductFeature" Title="ScreenSnap" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
       <ComponentRef Id="ApplicationShortcut" />
       <ComponentRef Id="ApplicationShortcutDesktop" />
       <ComponentRef Id="INSTALLFOLDER_Permission"/>
-		</Feature>
+    </Feature>
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
@@ -73,5 +71,11 @@
 			  <File Id="ScreenSnapUI.exe.config" Name="ScreenSnapUI.exe.config" Source="$(var.ScreenSnapUI_TargetDir)ScreenSnapUI.exe.config" />
 			</Component>
 		</ComponentGroup>
+
+    <CustomAction Id="LaunchBackgroundProgram" Execute="immediate" Impersonate="yes" Return="asyncNoWait" Directory="INSTALLFOLDER" ExeCommand="[INSTALLFOLDER]ScreenSnap.exe" />
+
+    <InstallExecuteSequence>
+      <Custom Action="LaunchBackgroundProgram" After="InstallFinalize">NOT Installed</Custom>
+    </InstallExecuteSequence>
   </Product>
 </Wix>
